@@ -223,10 +223,10 @@ int isAsciiDigit(int x) {
  *   Rating: 3
  */
 int conditional(int x, int y, int z) {
-  /* Checking if x is 0 as that is the only case it is false*/
+  // Checking if x is 0 as that is the only case it is false
   x = !x<<31>>31;
-  /*If x is 0, return y*/
-  /*If x is not 0, return z*/
+  // If x is 0, return y
+  // If x is not 0, return z
   return (x&z)+((~x)&y);
 }
 /* 
@@ -239,7 +239,7 @@ int conditional(int x, int y, int z) {
 int isLessOrEqual(int x, int y) { 
   int signX = x >> 31;
   int signY = y >> 31;
-  /* Checking if x and y have the same sign*/
+  // Checking if x and y have the same sign
   int signXY = !(signX ^ signY);
 
   // (y + (~x + 1)) will check if y is greater or equal to the two's complement of x. If it is, then the sign will be 0, resulting in the negation of 0 & 0x80000000 to give 1.
@@ -275,10 +275,9 @@ int logicalNeg(int x) {
 int howManyBits(int x) {
   int sign,bit16,bit8,bit4,bit2,bit1,bit0;
   sign=x>>31;
-  // 
   x = (sign&~x)|(~sign&x);
 
-  /* We first exclude the sign of x. 
+  /* We first remove the sign of x. 
    * Then we split x in half over and over again and see if there is
    * a 1 in each split at the highest position. If there is, then it means 
    * that we need at least that number of bits (the current half) to 
@@ -374,7 +373,7 @@ unsigned float_i2f(int x) {
   while (!(x&mask)){ 
       x = x<<1;
       e = e - 1;
-    }
+  }
 
   fraction = (x&(~mask)) >> 8;
 
